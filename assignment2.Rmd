@@ -1,0 +1,75 @@
+---
+title: "Assignment 2"
+author: "Kelly Eng"
+date: "2023-09-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Load these packages
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(DBI)
+library(RMySQL)
+```
+
+Connect to database, query, and write it to a csv file
+Real password obviously not shown
+
+```{r db-connection}
+con <- dbConnect(RMySQL::MySQL(), host = "localhost", user = "root", password = "insertyourownpasswordhere", dbname = "movieratings")
+query <- "SELECT * FROM movieratings.movie_ratings";
+movie_ratings_data <- dbGetQuery(con, query)
+write.csv(movie_ratings_data, file = "movie_ratings.csv", row.names = FALSE)
+```
+
+Put the generated csv file into a data frame
+```{r convert}
+csv_file <- read.csv('movie_ratings.csv')
+movie_ratings <- as.data.frame(csv_file)
+```
+
+Gets average rating for each movie and the median rating of all movies
+
+```{r analysis}
+dim(movie_ratings)
+glimpse(movie_ratings)
+movies <- movie_ratings[, 2]
+ratings <- movie_ratings[, 4]
+print(ratings)
+mean <- function(movie_title) {
+  index <- 1
+  total <- 0
+  seen <- 0
+  for (movie in movies) {
+    if (movie == movie_title) {
+      check <- is.na(ratings[index])
+      #ignores null values for ratings
+      if (check == FALSE) {
+        total <- total + ratings[index]
+        seen <- seen + 1
+      }
+    }
+    index <- index + 1
+  }
+  return(total / seen)
+}
+
+print(mean("Barbie"))
+print(mean("Mario"))
+print(mean("Oppenheimer"))
+print(mean("Guardians of the Galaxy 3"))
+print(mean("Spider-man"))
+print(mean("Fast X"))
+median_of_all_ratings <- median(ratings, na.rm = TRUE)
+print(median)
+```
+
+Plot of all the ratings, null values excluded
+```{r plot-data}
+ggplot(data = movie_ratings, aes(x = movie, y = rating)) + geom_point(na.rm = TRUE)
+```

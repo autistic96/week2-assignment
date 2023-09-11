@@ -1,0 +1,31 @@
+"id","movie","watcher_name","rating"
+1,"Barbie","Bob",1
+2,"Barbie","Ken",3
+3,"Barbie","Sally",5
+4,"Barbie","Kay",3
+5,"Barbie","Charlotte",4
+6,"Mario","Bob",5
+7,"Mario","Ken",4
+8,"Mario","Sally",1
+9,"Mario","Kay",4
+10,"Mario","Charlotte",3
+11,"Oppenheimer","Bob",1
+12,"Oppenheimer","Ken",3
+13,"Oppenheimer","Sally",5
+14,"Oppenheimer","Kay",3
+15,"Oppenheimer","Charlotte",4
+16,"Guardians of the Galaxy 3","Bob",3
+17,"Spider-man","Bob",5
+18,"Fast X","Bob",5
+19,"Guardians of the Galaxy 3","Ken",NA
+20,"Guardians of the Galaxy 3","Sally",NA
+21,"Guardians of the Galaxy 3","Kay",NA
+22,"Guardians of the Galaxy 3","Charlotte",NA
+23,"Spider-man","Ken",NA
+24,"Spider-man","Sally",NA
+25,"Spider-man","Kay",NA
+26,"Spider-man","Charlotte",NA
+27,"Fast X","Ken",NA
+28,"Fast X","Sally",NA
+29,"Fast X","Kay",NA
+30,"Fast X","Charlotte",NA
